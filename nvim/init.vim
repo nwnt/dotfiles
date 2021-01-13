@@ -40,11 +40,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Utilities 
 Plug 'tpope/vim-surround'
 
+" Vimwiki
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
-" }}}
-" Color stuff {{{
-colorscheme gruvbox
-highlight Normal guibg=none
 " }}}
 " Key Mappings {{{
 let mapleader = " "
@@ -52,12 +51,12 @@ let mapleader = " "
 nnoremap <leader>s :mksession<CR>
 nnoremap gV `[v`]
 nnoremap q <ESC>
+nnoremap qq :q
 inoremap jk <ESC>
 nnoremap B ^
 nnoremap E $
 
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-
 " }}}
 " vim:foldmethod=marker:foldlevel=0

@@ -36,4 +36,3 @@ filetype plugin indent on
 syntax enable
 
 set modelines=1 " For init.vim specific fold settings / set to 1 line
-
