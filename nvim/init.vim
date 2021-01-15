@@ -34,7 +34,7 @@ Plug 'ryanoasis/vim-devicons'
 " Development tools
 Plug 'fatih/vim-go'
 Plug 'yggdroot/indentline'
-" Plug 'sheerun/vim-polyglot'  " A collection of lang packs for vim
+Plug 'sheerun/vim-polyglot'  " A collection of lang packs for vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Utilities 
@@ -51,7 +51,7 @@ let mapleader = " "
 nnoremap <leader>s :mksession<CR>
 nnoremap gV `[v`]
 nnoremap q <ESC>
-nnoremap qq :q
+nnoremap zq :q<CR>
 inoremap jk <ESC>
 nnoremap B ^
 nnoremap E $
@@ -59,4 +59,5 @@ nnoremap E $
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 " }}}
+"let g:go_code_completion_enabled = 0 
 " vim:foldmethod=marker:foldlevel=0
