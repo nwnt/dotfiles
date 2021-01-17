@@ -50,8 +50,9 @@ let mapleader = " "
 
 nnoremap <leader>s :mksession<CR>
 nnoremap gV `[v`]
+nnoremap zq q
 nnoremap q <ESC>
-nnoremap zq :q<CR>
+nnoremap Q :q<CR>
 inoremap jk <ESC>
 nnoremap B ^
 nnoremap E $
@@ -59,5 +60,6 @@ nnoremap E $
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 " }}}
-"let g:go_code_completion_enabled = 0 
+let g:indentLine_char_list = ['🂡', '🂢', '🂣' ]
+let g:indentLine_setColors = 0
 " vim:foldmethod=marker:foldlevel=0

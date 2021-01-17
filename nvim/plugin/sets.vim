@@ -25,7 +25,6 @@ set backspace=indent,eol,start "Backspace on the insert mode
 set showmatch " highlight matching [{()}]
 set lazyredraw " redraw only when needed
 set cursorline
-
 " folding
 set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
