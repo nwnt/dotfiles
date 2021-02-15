@@ -1,0 +1,43 @@
+#Binding the prefix key
+set -g prefix 'C-s'
+#bind 'C-\' send-prefix
+unbind C-b
+
+
+#Set window number to start with 1
+set -g base-index 1
+
+#Setting the delay between prefix and command
+set -s escape-time 10
+
+#Reloading the config
+bind r source-file ~/.config/tmux/.tmux.conf \; display "Fresh Tmux Config!"
+
+# Use vim keybindings in copy mode
+setw -g mode-keys vi
+
+# Move around Tmux splits with vim like syntax
+bind -n M-h select-pane -L
+bind -n M-j select-pane -D
+bind -n M-k select-pane -U
+bind -n M-l select-pane -R 
+bind y run-shell "tmux show-buffer | xclip -sel clip -i" \; display-message "Copied tmux buffer to sys clip"
+
+# A Nice Red For the Active Panel
+set-option -g pane-border-style fg="#BE0029"
+
+# No status bar
+#set-option -g status off
+
+# Keybindings for controlling the status bar
+bind-key S { set-option status on }
+bind-key s { set-option status off }
+bind-key i { set-option status-position top }
+bind-key u { set-option status-position bottom }
+bind-key -r '+' resize-pane -U 5
+bind-key -r '-' resize-pane -D 5
+bind-key -r '<' resize-pane -L 5
+bind-key -r '>' resize-pane -R 5
+
+bind-key Z { set-window-option synchronize-panes on }
+bind-key z { set-window-option synchronize-panes off }
