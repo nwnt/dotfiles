@@ -36,6 +36,7 @@ Plug 'fatih/vim-go'
 Plug 'yggdroot/indentline'
 Plug 'sheerun/vim-polyglot'  " A collection of lang packs for vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'easymotion/vim-easymotion'
 
 " Utilities 
 Plug 'tpope/vim-surround'
@@ -54,8 +55,8 @@ nnoremap zq q
 nnoremap q <ESC>
 nnoremap Q :q<CR>
 inoremap jk <ESC>
-nnoremap B ^
-nnoremap E $
+nnoremap H ^
+nnoremap L $
 
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
