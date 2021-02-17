@@ -1,0 +1,39 @@
+" Emulated plug-ins
+set surround
+set commentary
+set textobj-entire
+set argtextobj
+set easymotion
+set multiple-cursors
+
+" Use Idea to join 
+set ideajoin
+
+" All copies go to system clipboard
+set clipboard+=unnamed
+
+" Various sets
+set rnu
+set nu
+set highlightedyank
+
+" Key Mapping
+let mapleader = " "
+
+nnoremap L $
+nnoremap H ^
+
+" Intellij
+nnoremap <leader>e :action SearchEverywhere<CR>
+nnoremap <leader>g :action FindInPath<CR>
+nnoremap <leader>s :action FileStructurePopup<CR>
+nnoremap <leader>n :action NewClass<CR>
+nnoremap <leader>v :action Tool_External Tools_gvim<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+nnoremap U :action FindUsages<CR> 
+nnoremap R :action RenameElement<CR>
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
