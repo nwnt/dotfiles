@@ -44,6 +44,9 @@ Plug 'tpope/vim-surround'
 " Vimwiki
 Plug 'vimwiki/vimwiki'
 
+" Vista.vim showing code outline
+Plug 'liuchengxu/vista.vim'
+
 call plug#end()
 " }}}
 " Key Mappings {{{
@@ -61,6 +64,4 @@ nnoremap L $
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 " }}}
-let g:indentLine_char_list = ['🂡', '🂢', '🂣' ]
-let g:indentLine_setColors = 0
 " vim:foldmethod=marker:foldlevel=0
