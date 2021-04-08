@@ -111,6 +111,9 @@ alias vimconfig="vi ~/.config/nvim/init.vim"
 # Bindkeys
 bindkey '^ ' forward-word
 
+# Unbind keys
+bindkey -r '^s'
+
 # Tmux config
 ZSH_TMUX_CONFIG="~/.config/tmux/.tmux.conf"
 # TMUX related Aliases
@@ -145,3 +148,19 @@ export SDKMAN_DIR="/home/nont/.sdkman"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/nont/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/nont/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/nont/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/nont/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
