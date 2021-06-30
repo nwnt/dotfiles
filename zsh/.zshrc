@@ -75,6 +75,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
 plugins=(zsh-syntax-highlighting zsh-autosuggestions fasd terraform kubectl git colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
@@ -103,6 +104,7 @@ source ~/.profile
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias ls="colorls --sd -A"
 alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias serve="browser-sync start --server --files ."
@@ -135,11 +137,17 @@ export PATH=$PATH:~/work/spark/apache-spark/bin
 export PYSPARK_PYTHON=python3
 
 #GO 
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=/opt/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
 
 #Evince (PDF Reader)
 #export DISPLAY=desktop:0
+
+#Iterate through arguments
+autoload -Uz copy-earlier-word
+zle -N copy-earlier-word
+bindkey "^[;" copy-earlier-word
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/nont/.sdkman"
@@ -151,14 +159,14 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/nont/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/nont/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/nont/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/nont/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/nont/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/nont/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/nont/miniconda3/bin:$PATH"
+        export PATH="/home/nont/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

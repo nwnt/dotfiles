@@ -43,6 +43,8 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
+Plug 'mhinz/vim-startify'
+Plug 'dyng/ctrlsf.vim'
 
 " Vimwiki
 Plug 'vimwiki/vimwiki'
@@ -60,11 +62,43 @@ nnoremap gV `[v`]
 nnoremap zq q
 nnoremap q <ESC>
 nnoremap Q :q<CR>
-inoremap jk <ESC>
 nnoremap H ^
 nnoremap L $
 
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
+
+" Insert mode shortcuts
+inoremap jk <ESC>
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
+inoremap <M-;> <ESC>A;
+inoremap <M-,> <ESC>A,
+inoremap <M-l> <C-o>A
+inoremap <M-h> <C-o>^
+inoremap <M-}> <ESC>]}a
+inoremap <M-{> <ESC>[{a
+inoremap <M-)> <ESC>])a
+inoremap <M-(> <ESC>[(a
+
+"FZF
+" Let the :Files command show all files in the repo (including any hidden)
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git/*"'
+
+" fzf buffer search
+nmap <leader>/ :BLines!<CR>
+" fzf project search
+nmap <leader>? :Rg!<CR>
+" fzf file name search 
+nmap <leader>z :Files!<CR>
+" fzf command search
+nmap <leader>c :Commands!<CR>
+
+" }}}
+" Custom Functions {{{
+" }}}
+" {{{ Autocmds
 " }}}
 " vim:foldmethod=marker:foldlevel=0
