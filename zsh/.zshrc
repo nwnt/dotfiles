@@ -11,6 +11,23 @@ export TERM="xterm-256color" # If you come from bash you might have to change yo
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nont/.oh-my-zsh"
 
+# FZF setup
+FZF_COMMON_OPTIONS="
+--bind='?:toggle-preview'
+--bind='ctrl-u:preview-page-up'
+--bind='ctrl-d:preview-page-down'
+--preview-window 'right:60%:hidden:wrap'
+--preview '([[ -d {} ]] && tree -C {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'"
+
+command -v fd > /dev/null && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_OPTS="$FZF_COMMON_OPTIONS"
+command -v fd > /dev/null && export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+command -v fd > /dev/null && export FZF_CTRL_T_COMMAND='fd --type f --type d --hidden --follow --exclude .git'
+
+cz() {
+    cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && echo "$PWD" && tree -L 1
+}
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
