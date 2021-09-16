@@ -1,3 +1,44 @@
+" Core Vim Settings {{{
+
+set encoding=UTF-8
+set exrc "Specific customization for each project when doing vim .
+set shiftwidth=4 " 4 space tabs
+set tabstop=4 softtabstop=4
+set expandtab "Use spaces instead of tabs
+set smartindent "group indenting
+set nu "Line number
+set rnu "Relative line number
+set nohlsearch "No highlight on search
+set hidden "Keep buffer in the background without having to save first
+set noerrorbells
+set nowrap "No word wrapping on multiple lines
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch "Incremental search
+set termguicolors
+set scrolloff=8 "Getting near the bottom and will keep lines away
+set signcolumn=yes
+set colorcolumn=80
+set completeopt=menuone,noinsert,noselect
+set updatetime=50
+set backspace=indent,eol,start "Backspace on the insert mode
+set showmatch " highlight matching [{()}]
+set lazyredraw " redraw only when needed
+set cursorline
+" folding
+set foldenable " enable folding
+set foldlevelstart=10 " open most folds by default
+set foldnestmax=10
+set foldmethod=indent
+
+filetype plugin indent on
+syntax enable
+
+set modelines=1 " For init.vim specific fold settings / set to 1 line
+
+" }}}
 " Plug-ins {{{
 call plug#begin('~/.vim/plugged')
 
@@ -54,7 +95,7 @@ Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 " }}}
-" Key Mappings {{{
+" Core Vim Key Mappings {{{
 let mapleader = " "
 
 nnoremap <leader>s :mksession<CR>
@@ -310,7 +351,7 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " }}}
-" NERDTree Git Plugin {{{
+" NERDTree Git Plugin Config {{{
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -326,7 +367,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ }
 
 " }}}
-" NERDTree Syntax Highlight {{{
+" NERDTree Syntax Highlight Config {{{
 
 " " Enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFolders = 1 
@@ -363,6 +404,93 @@ let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
 let g:NERDTreePatternMatchHighlightColor = {} 
 " " Sets the color for files ending with _spec.rb
 let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red 
+
+" }}}
+" NERDTree Core Plugin Config {{{
+
+let g:NERDTreeShowHidden = 1 
+let g:NERDTreeMinimalUI = 1 " hide helper
+let g:NERDTreeIgnore = ['^node_modules$'] " ignore node_modules to increase load speed 
+" " Toggle
+noremap <silent> <leader>nt :NERDTreeToggle<CR>
+" " Close window if NERDTree is the last one
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" " Map to open current file in NERDTree and set size
+nnoremap <leader>nf :NERDTreeFind<bar> :vertical resize 45<CR>
+
+" }}}
+" Treesitter Plugin Config {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+
+    ensure_isntall = "all", 
+
+    incremental_selection = {
+    enable = true,
+    keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+        },
+    },
+
+    highlight = {
+        enable = true,
+    },
+
+    indent = {
+        enable = true
+    },
+
+}
+EOF
+" }}}
+" Telescope Plugin Config {{{
+" Keymap
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+
+" Config
+" }}}
+" Undotree Plugin Config {{{
+
+set undodir=~/.config/undodir
+set undofile 
+
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+" }}}
+" Vim-DevIcons Plugin Config {{{
+
+" " Color customization
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "CB6F6F"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+" " Sets the color for folders that did not match any rule
+let g:WebDevIconsDefaultFolderSymbolColor = s:beige 
+" " Sets the color for files that did not match any rule
+let g:WebDevIconsDefaultFileSymbolColor = s:blue 
+
+" }}}
+" Vimwiki Plugin Config {{{
+
+let g:vimwiki_list = [{'path': '~/Documents/wiki',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
