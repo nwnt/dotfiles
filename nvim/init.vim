@@ -15,7 +15,6 @@ set nowrap "No word wrapping on multiple lines
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
-set undofile
 set incsearch "Incremental search
 set termguicolors
 set scrolloff=8 "Getting near the bottom and will keep lines away
@@ -74,6 +73,8 @@ Plug 'ryanoasis/vim-devicons'
 
 " Development tools
 Plug 'fatih/vim-go'
+Plug 'AndrewRadev/splitjoin.vim'
+"Plug 'SirVer/ultisnips'
 Plug 'yggdroot/indentline'
 Plug 'sheerun/vim-polyglot'  " A collection of lang packs for vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -100,13 +101,25 @@ let mapleader = " "
 
 nnoremap <leader>s :mksession<CR>
 nnoremap gV `[v`]
-nnoremap Q :q<CR>
+nnoremap <silent>Q :q<CR>
 nnoremap H ^
 nnoremap L $
+nnoremap <leader>; :
+vnoremap <leader>; :
+
+" Jump list mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+" Keeping the search centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
 
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <F10> "+p
+nnoremap <silent><leader>= :source $MYVIMRC<enter>
 
 " Insert mode shortcuts
 inoremap jk <ESC>
@@ -114,6 +127,9 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
+inoremap <C-n> <C-o>%<C-o>%<right><space>
 inoremap <M-;> <ESC>A;
 inoremap <M-,> <ESC>A,
 inoremap <M-l> <C-o>A
@@ -122,6 +138,20 @@ inoremap <M-}> <ESC>]}a
 inoremap <M-{> <ESC>[{a
 inoremap <M-)> <ESC>])a
 inoremap <M-(> <ESC>[(a
+inoremap <M-'> <C-o>f"<right>
+" Undo break points
+inoremap , ,<C-G>u
+inoremap . .<C-G>u
+inoremap [ [<C-G>u
+inoremap ! !<C-G>u
+inoremap ? ?<C-G>u
+
+" Moving text with the cursor
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+
 " }}}
 " Custom Functions {{{
 " }}}
@@ -129,18 +159,21 @@ inoremap <M-(> <ESC>[(a
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 " }}}
+" Vim-Surround Config and Keymap {{{
+nmap <leader>0 ysiw
+" }}}
 " FZF Plugin Config {{{
 " Let the :Files command show all files in the repo (including any hidden)
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git/*"'
 
 " fzf buffer search
-nmap <leader>/ :BLines!<CR>
+nmap <silent><leader>/b :BLines!<CR>
 " fzf project search
-nmap <leader>? :Rg!<CR>
+nmap <silent><leader>/? :Rg!<CR>
 " fzf file name search 
-nmap <leader>z :Files!<CR>
+nmap <silent><leader>/f :Files!<CR>
 " fzf command search
-nmap <leader>c :Commands!<CR>
+nmap <silent><leader>/c :Commands!<CR>
 " }}}
 " CoC Plugin Config {{{
 " TextEdit might fail if hidden is not set.
@@ -305,6 +338,13 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Coc-snippets
+" Use <C-l> for trigger snippet expand.
+imap <M-i> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-x> <Plug>(coc-snippets-select)
+
 " }}}
 " Vim-Go Plugin Config {{{
 "
@@ -334,9 +374,10 @@ endfunction
 
 " Map keys for most used commands.
 " Ex: `\b` for building, `\r` for running and `\b` for running test.
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>gr <Plug>(go-run)
+autocmd FileType go nmap <leader>gt <Plug>(go-test)
+autocmd FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
 " }}}
 " Limelight Plugin Config {{{
 
@@ -486,6 +527,14 @@ let g:WebDevIconsDefaultFolderSymbolColor = s:beige
 " " Sets the color for files that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue 
 
+" }}}
+" ultisnips Plugin Config {{{
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 " }}}
 " Vimwiki Plugin Config {{{
 
