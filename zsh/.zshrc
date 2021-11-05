@@ -9,7 +9,7 @@ export TERM="xterm-256color" # If you come from bash you might have to change yo
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/nont/.oh-my-zsh"
+export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 
 # FZF setup
 FZF_COMMON_OPTIONS="
@@ -96,7 +96,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(zsh-syntax-highlighting zsh-autosuggestions fasd terraform kubectl git colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.profile
 
 # User configuration
 
@@ -121,7 +120,9 @@ source ~/.profile
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias ls="colorls --sd -A"
+alias vi="nvim"
+alias vim="nvim"
+alias ls="exa"
 alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias serve="browser-sync start --server --files ."
@@ -162,10 +163,7 @@ autoload -Uz copy-earlier-word
 zle -N copy-earlier-word
 bindkey "^[;" copy-earlier-word
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/nont/.sdkman"
-[[ -s "/home/nont/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nont/.sdkman/bin/sdkman-init.sh"
-. "/home/nont/.acme.sh/acme.sh.env"
-
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
