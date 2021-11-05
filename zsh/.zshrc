@@ -146,6 +146,8 @@ alias                                   \
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# default text editor
+export EDITOR=$(where nvim | head -n 1)
 
 #Customized path in home directory
 export PATH=$PATH:~/bin
