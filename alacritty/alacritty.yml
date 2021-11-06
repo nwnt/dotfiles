@@ -136,34 +136,38 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors 
+# TokyoNight Alacritty Colors
 colors:
   # Default colors
   primary:
-    background: '#10100E'
-    foreground: '#C6C6C4'
+    background: '0x1a1b26'
+    foreground: '0xc0caf5'
 
   # Normal colors
   normal:
-    black: '#10100E'
-    red: '#C40233'
-    green: '#009F6B'
-    yellow: '#FFD700'
-    blue: '#0087BD'
-    magenta: '#9A4EAE'
-    cyan: '#20B2AA'
-    white: '#C6C6C4'
+    black:   '0x15161E'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xa9b1d6'
 
   # Bright colors
   bright:
-    black: '#696969'
-    red: '#FF2400'
-    green: '#03C03C'
-    yellow: '#FDFF00'
-    blue: '#007FFF'
-    magenta: '#FF1493'
-    cyan: '#00CCCC'
-    white: '#FFFAFA'
+    black:   '0x414868'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xc0caf5'
+
+  indexed_colors:
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 
 # Visual Bell
 #
@@ -194,7 +198,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.75
+background_opacity: 0.95
 #selection:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 # When set to `true`, selected text will be copied to the primary clipboard.
