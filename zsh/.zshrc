@@ -127,6 +127,7 @@ alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias serve="browser-sync start --server --files ."
 alias vimconfig="vim ~/.config/nvim/init.vim"
+alias x="echo"
 
 # Bindkeys
 bindkey '^ ' forward-word

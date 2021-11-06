@@ -1,8 +1,6 @@
 " Core Vim Settings {{{
 
 set encoding=UTF-8
-set exrc "Specific customization for each project when doing vim .
-set shiftwidth=4 " 4 space tabs
 set tabstop=4 softtabstop=4
 set expandtab "Use spaces instead of tabs
 set smartindent "group indenting
@@ -17,9 +15,9 @@ set nobackup
 set undodir=~/.vim/undodir
 set incsearch "Incremental search
 set termguicolors
-set scrolloff=8 "Getting near the bottom and will keep lines away
+set scrolloff=5 "Getting near the bottom and will keep lines away
 set signcolumn=yes
-set colorcolumn=80
+set colorcolumn=80,120,160
 set completeopt=menuone,noinsert,noselect
 set updatetime=50
 set backspace=indent,eol,start "Backspace on the insert mode
@@ -102,8 +100,6 @@ let mapleader = " "
 nnoremap <leader>s :mksession<CR>
 nnoremap gV `[v`]
 nnoremap <silent>Q :q<CR>
-nnoremap H ^
-nnoremap L $
 nnoremap <leader>; :
 vnoremap <leader>; :
 
