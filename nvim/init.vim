@@ -19,7 +19,7 @@ set scrolloff=5 "Getting near the bottom and will keep lines away
 set signcolumn=yes
 set colorcolumn=80,120,160
 set completeopt=menuone,noinsert,noselect
-set updatetime=50
+set updatetime=100 " statusline update frequency
 set backspace=indent,eol,start "Backspace on the insert mode
 set showmatch " highlight matching [{()}]
 set lazyredraw " redraw only when needed
@@ -35,6 +35,9 @@ syntax enable
 
 set modelines=1 " For init.vim specific fold settings / set to 1 line
 
+
+let g:python3_host_prog='/usr/bin/python3'
+
 " }}}
 " Plug-ins {{{
 call plug#begin('~/.vim/plugged')
@@ -43,6 +46,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -54,6 +58,29 @@ Plug 'mbbill/undotree'
 " UI and Colors
 Plug 'gruvbox-community/gruvbox'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'tiagovla/tokyodark.nvim' 
+Plug 'sjl/badwolf'
+Plug 'tstelzer/welpe.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'rakr/vim-two-firewatch'
+Plug 'junegunn/seoul256.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'glepnir/oceanic-material'
+Plug 'nanotech/jellybeans.vim'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'tlhr/anderson.vim'
+Plug 'ajmwagar/vim-deus'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'jsit/toast.vim'
+Plug 'fcpg/vim-fahrenheit'
+Plug 'ayu-theme/ayu-vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'mangeshrex/uwu.vim'
+Plug 'sainnhe/everforest'
+Plug 'vigoux/oak'
+Plug 'savq/melange'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -73,11 +100,12 @@ Plug 'ryanoasis/vim-devicons'
 " Development tools
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'yggdroot/indentline'
 Plug 'sheerun/vim-polyglot'  " A collection of lang packs for vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'easymotion/vim-easymotion'
+Plug 'BurntSushi/ripgrep'
 
 " Utilities 
 Plug 'tpope/vim-surround'
@@ -151,10 +179,14 @@ nnoremap <leader>j :m .+1<CR>==
 
 " }}}
 " Custom Functions {{{
+
 " }}}
 " Autocmds {{{
+
+" Markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+
 " }}}
 " Vim-Surround Config and Keymap {{{
 nmap <leader>0 ysiw
@@ -344,6 +376,8 @@ vmap <C-x> <Plug>(coc-snippets-select)
 
 " }}}
 " Vim-Go Plugin Config {{{
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 "
 " Go syntax highlighting
 let g:go_highlight_fields = 1
@@ -351,10 +385,15 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_types = 1
 
 " Auto formatting and importing
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+"let g:go_metalinter_autosave = 1
+"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_deadline = "5s"
 
 " Status line types/signatures
 let g:go_auto_type_info = 1
@@ -375,6 +414,10 @@ autocmd FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>gr <Plug>(go-run)
 autocmd FileType go nmap <leader>gt <Plug>(go-test)
 autocmd FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
+autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplitedit')
+autocmd FileType go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd FileType go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 " }}}
 " Limelight Plugin Config {{{
 
@@ -487,6 +530,10 @@ EOF
 " Telescope Plugin Config {{{
 " Keymap
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
+nnoremap <leader>fh <cmd>Telescope help_tags<CR>
+
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 
 " Config
