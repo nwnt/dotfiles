@@ -159,6 +159,13 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+set $rsize 5
+
+bindsym $mod+shift+y            resize shrink width $rsize px or $rsize ppt
+bindsym $mod+shift+u            resize shrink height $rsize px or $rsize ppt
+bindsym $mod+shift+i            resize grow height $rsize px or $rsize ppt
+bindsym $mod+shift+o            resize grow width $rsize px or $rsize ppt
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
