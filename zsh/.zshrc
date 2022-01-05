@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export TERMINAL=alacritty
+
 export TERM="xterm-256color" # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -150,10 +152,10 @@ alias                                   \
 export EDITOR=$(where nvim | head -n 1)
 
 #Customized path in home directory
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/.local/bin
 
 #GO 
-export GOPATH=/opt/go
+export GOPATH=~/.local/bin/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 

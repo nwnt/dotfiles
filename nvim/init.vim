@@ -81,6 +81,11 @@ Plug 'sainnhe/everforest'
 Plug 'vigoux/oak'
 Plug 'savq/melange'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'marko-cerovac/material.nvim'
+Plug 'rigellute/rigel'
+Plug 'whatyouhide/vim-gotham'
+
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
