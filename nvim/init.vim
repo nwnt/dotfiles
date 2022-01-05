@@ -80,6 +80,7 @@ Plug 'mangeshrex/uwu.vim'
 Plug 'sainnhe/everforest'
 Plug 'vigoux/oak'
 Plug 'savq/melange'
+Plug 'rebelot/kanagawa.nvim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

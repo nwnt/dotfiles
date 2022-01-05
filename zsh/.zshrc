@@ -85,7 +85,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# export ZSH_CUSTOM=$ZSH_CUSTOM:/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -123,10 +123,9 @@ source $ZSH/oh-my-zsh.sh
 alias vi="nvim"
 alias vim="nvim"
 alias ls="exa"
-alias zshconfig="vim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vi $ZDOTDIR/.zshrc"
 alias serve="browser-sync start --server --files ."
-alias vimconfig="vim ~/.config/nvim/init.vim"
+alias vimconfig="vi $XDG_CONFIG_HOME/nvim/init.vim"
 alias x="echo"
 
 # Bindkeys
