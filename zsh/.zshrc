@@ -18,7 +18,7 @@ FZF_COMMON_OPTIONS="
 --bind='?:toggle-preview'
 --bind='ctrl-u:preview-page-up'
 --bind='ctrl-d:preview-page-down'
---preview-window 'right:60%:hidden:wrap'
+--preview-window 'right:60%:wrap'
 --preview '([[ -d {} ]] && tree -C {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'"
 
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -124,7 +124,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias vi="nvim"
 alias vim="nvim"
-alias ls="exa"
+alias cp="cp -iv"
+alias ls="exa --group-directories-first"
 alias zshconfig="vi $ZDOTDIR/.zshrc"
 alias serve="browser-sync start --server --files ."
 alias vimconfig="vi $XDG_CONFIG_HOME/nvim/init.vim"
