@@ -13,6 +13,5 @@
 	},
 	"yaml.schemas": {},
     "go.goplsArgs": ["-remote", "auto"],
-    "go.goplsPath": "/opt/go/bin/gopls",
-    "java.saveActions.organizeImports": true
+    "go.goplsPath": "/home/nont/.local/bin/go/bin/gopls"
 }

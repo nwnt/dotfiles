@@ -6,7 +6,7 @@ set expandtab "Use spaces instead of tabs
 set smartindent "group indenting
 set nu "Line number
 set rnu "Relative line number
-set nohlsearch "No highlight on search
+set hlsearch "No highlight on search
 set hidden "Keep buffer in the background without having to save first
 set noerrorbells
 set nowrap "No word wrapping on multiple lines
@@ -40,7 +40,7 @@ let g:python3_host_prog='/usr/bin/python3'
 
 " }}}
 " Plug-ins {{{
-call plug#begin('~/.vim/plugged')
+call plug#begin('$XDG_DATA_HOME/plugged')
 
 " telescope requirements
 Plug 'nvim-lua/popup.nvim'
@@ -54,6 +54,9 @@ Plug 'nvim-treesitter/playground'
 
 " Undotree
 Plug 'mbbill/undotree'
+
+" Neovim LSP
+Plug 'neovim/nvim-lspconfig'
 
 " UI and Colors
 Plug 'gruvbox-community/gruvbox'
@@ -112,6 +115,7 @@ Plug 'sheerun/vim-polyglot'  " A collection of lang packs for vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'easymotion/vim-easymotion'
 Plug 'BurntSushi/ripgrep'
+Plug 'hrsh7th/nvim-cmp'
 
 " Utilities 
 Plug 'tpope/vim-surround'

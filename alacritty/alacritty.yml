@@ -105,7 +105,7 @@ font:
     family: ComicMono NF
     style: Bold Italic
 
-  size: 9
+  size: 12
 
   # Offset is the extra space arouSourceCodePro Nerd Font
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

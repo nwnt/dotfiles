@@ -14,6 +14,6 @@ let g:tokyodark_transparent_background = 0
 let g:tokyodark_color_gamma = "1.5"
 
 highlight Normal guibg=none
-colorscheme jellybeans
+colorscheme kanagawa
 " }}}
 " vim:foldmethod=marker:foldlevel=0

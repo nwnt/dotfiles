@@ -222,5 +222,13 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Adjust monitor profile
 exec_always --no-startup-id autorandr -c
 
+# Monitor power management
+# Disable all
+exec --no-startup-id xset -s off
+exec --no-startup-id xset -s noblank
+exec --no-startup-id xset -dpms
+
+
 # Display Wallpaper
 exec_always --no-startup-id feh --bg-scale /home/nont/Pictures/denali-2.jpg
+

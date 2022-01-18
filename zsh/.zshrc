@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export TERMINAL=alacritty
+export EDITOR="nvim"
 
 export TERM="xterm-256color" # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -122,14 +123,26 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias t1="tree -L 1"
+alias t2="tree -L 2"
+alias t3="tree -L 3"
 alias vi="nvim"
 alias vim="nvim"
 alias cp="cp -iv"
+alias mv="mv -iv"
 alias ls="exa --group-directories-first"
 alias zshconfig="vi $ZDOTDIR/.zshrc"
 alias serve="browser-sync start --server --files ."
 alias vimconfig="vi $XDG_CONFIG_HOME/nvim/init.vim"
 alias x="echo"
+alias ua-drop-caches='sudo paccache -rk3; yay -Sc --aur --noconfirm'
+alias ua-update-all='export TMPFILE="$(mktemp)"; \
+    sudo true; \
+    rate-mirrors --save=$TMPFILE arch --max-delay=21600 \
+      && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
+      && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
+      && ua-drop-caches \
+      && yay -Syyu --noconfirm'
 
 # Bindkeys
 bindkey '^ ' forward-word
@@ -152,13 +165,17 @@ alias                                   \
 # default text editor
 export EDITOR=$(where nvim | head -n 1)
 
-#Customized path in home directory
+# Customized path in home directory
 export PATH=$PATH:~/bin:~/.local/bin
 
-#GO 
+# GO 
 export GOPATH=~/.local/bin/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+
+# Lua LSP
+export LUA_LSP_MAIN=/usr/lib/lua-language-server/main.lua
+export LUA_LSP_BIN=/usr/bin/lua-language-server
 
 #Evince (PDF Reader)
 #export DISPLAY=desktop:0
@@ -172,3 +189,6 @@ autoload -U +X bashcompinit && bashcompinit
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# FASD util
+eval "$(fasd --init posix-alias zsh-hook)"
