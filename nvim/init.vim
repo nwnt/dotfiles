@@ -370,8 +370,15 @@ vmap <C-x> <Plug>(coc-snippets-select)
 
 " }}}
 " Vim-Go Plugin Config {{{
+let g:go_gopls_enabled = 1
+let g:go_gopls_options = ['-remote=auto']
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_referrers_mode = 'gopls'
+
+" disabling vim-go shortcut
+let g:go_def_mapping_enabled = 0
+
 "
 " Go syntax highlighting
 let g:go_highlight_fields = 1

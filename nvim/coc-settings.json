@@ -12,7 +12,7 @@
 		}
 	},
 	"yaml.schemas": {},
-    "go.goplsArgs": ["-remote", "auto"],
+    "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
     "go.goplsPath": "/home/nont/.local/bin/go/bin/gopls",
 	"suggest.noselect": true
 }
