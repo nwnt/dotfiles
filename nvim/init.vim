@@ -8,6 +8,7 @@ set nu "Line number
 set rnu "Relative line number
 set hlsearch "No highlight on search
 set hidden "Keep buffer in the background without having to save first
+set background=dark
 set noerrorbells
 set nowrap "No word wrapping on multiple lines
 set noswapfile
@@ -29,6 +30,8 @@ set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
 set foldnestmax=10
 set foldmethod=indent
+
+set mouse=a
 
 filetype plugin indent on
 syntax enable
@@ -65,29 +68,9 @@ Plug 'tiagovla/tokyodark.nvim'
 Plug 'sjl/badwolf'
 Plug 'tstelzer/welpe.vim'
 Plug 'jacoborus/tender.vim'
-Plug 'kyoz/purify', { 'rtp': 'vim' }
-Plug 'rakr/vim-two-firewatch'
-Plug 'junegunn/seoul256.vim'
-Plug 'mhartington/oceanic-next'
-Plug 'glepnir/oceanic-material'
-Plug 'nanotech/jellybeans.vim'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'tlhr/anderson.vim'
-Plug 'ajmwagar/vim-deus'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'jsit/toast.vim'
-Plug 'fcpg/vim-fahrenheit'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/gruvbox-material'
-Plug 'mangeshrex/uwu.vim'
-Plug 'sainnhe/everforest'
-Plug 'vigoux/oak'
-Plug 'savq/melange'
 Plug 'rebelot/kanagawa.nvim'
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'marko-cerovac/material.nvim'
-Plug 'rigellute/rigel'
-Plug 'whatyouhide/vim-gotham'
 
 
 Plug 'vim-airline/vim-airline'
@@ -116,6 +99,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'easymotion/vim-easymotion'
 Plug 'BurntSushi/ripgrep'
 Plug 'hrsh7th/nvim-cmp'
+
 
 " Utilities 
 Plug 'tpope/vim-surround'
@@ -408,6 +392,9 @@ let g:go_metalinter_deadline = "5s"
 " Status line types/signatures
 let g:go_auto_type_info = 1
 
+" Use Pop-up window for doc
+let g:go_doc_popup_window = 1
+
 " Run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -425,7 +412,7 @@ autocmd FileType go nmap <leader>gr <Plug>(go-run)
 autocmd FileType go nmap <leader>gt <Plug>(go-test)
 autocmd FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
 autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplitedit')
+autocmd FileType go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd FileType go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd FileType go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 " }}}
@@ -528,10 +515,6 @@ require'nvim-treesitter.configs'.setup {
 
     highlight = {
         enable = true,
-    },
-
-    indent = {
-        enable = true
     },
 
 }

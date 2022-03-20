@@ -13,5 +13,6 @@
 	},
 	"yaml.schemas": {},
     "go.goplsArgs": ["-remote", "auto"],
-    "go.goplsPath": "/home/nont/.local/bin/go/bin/gopls"
+    "go.goplsPath": "/home/nont/.local/bin/go/bin/gopls",
+	"suggest.noselect": true
 }

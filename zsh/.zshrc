@@ -153,6 +153,7 @@ bindkey -r '^s'
 # Tmux config
 ZSH_TMUX_CONFIG="~/.config/tmux/.tmux.conf"
 # TMUX related Aliases
+alias tmux="TERM=screen-256color-bce tmux"
 alias                                   \
   tn="tmux -u -f $ZSH_TMUX_CONFIG new"      \
   ta="tmux -u -f $ZSH_TMUX_CONFIG attach"   \
@@ -166,7 +167,7 @@ alias                                   \
 export EDITOR=$(where nvim | head -n 1)
 
 # Customized path in home directory
-export PATH=$PATH:~/bin:~/.local/bin
+export PATH=$PATH:~/bin:~/.local/bin:~/.local/bin/scripts
 
 # GO 
 export GOPATH=~/.local/bin/go
