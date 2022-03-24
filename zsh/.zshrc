@@ -180,6 +180,7 @@ export LUA_LSP_BIN=/usr/bin/lua-language-server
 
 #Evince (PDF Reader)
 #export DISPLAY=desktop:0
+#
 
 #Iterate through arguments
 autoload -Uz copy-earlier-word
