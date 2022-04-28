@@ -96,7 +96,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #
-plugins=(zsh-syntax-highlighting zsh-autosuggestions fasd terraform kubectl git colored-man-pages)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions terraform kubectl git colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -155,7 +155,7 @@ ZSH_TMUX_CONFIG="~/.config/tmux/.tmux.conf"
 # TMUX related Aliases
 alias tmux="TERM=screen-256color-bce tmux"
 alias                                   \
-  tn="tmux -u -f $ZSH_TMUX_CONFIG new"      \
+  tn="tmux -u -f $ZSH_TMUX_CONFIG new -s"      \
   ta="tmux -u -f $ZSH_TMUX_CONFIG attach"   \
   tt="nvim $ZSH_TMUX_CONFIG"
 
@@ -193,4 +193,4 @@ autoload -U +X bashcompinit && bashcompinit
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # FASD util
-eval "$(fasd --init posix-alias zsh-hook)"
+#eval "$(fasd --init posix-alias zsh-hook)"

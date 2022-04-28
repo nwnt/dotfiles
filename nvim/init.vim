@@ -207,14 +207,17 @@ nmap <silent><leader>/f :Files!<CR>
 nmap <silent><leader>/c :Commands!<CR>
 " }}}
 " Vim-Go Plugin Config {{{
+
+" Sharing gopls with nvim_lsp
+" Make sure you run the following: gopls -listen="unix;/tmp/gopls-daemon-socket"
 let g:go_gopls_enabled = 1
-let g:go_gopls_options = ['-remote=auto', '-logfile', '/tmp/vim-gopls.log']
+let g:go_gopls_options = ['-remote=unix;/tmp/gopls-daemon-socket', '-logfile', '/tmp/vim-gopls.log']
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_referrers_mode = 'gopls'
 
 " disabling vim-go shortcut
-let g:go_def_mapping_enabled = 0
+let g:go_def_mapping_enabled = 1
 
 "
 " Go syntax highlighting
@@ -234,7 +237,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_deadline = "5s"
 
 " Status line types/signatures
-let g:go_auto_type_info = 1
+let g:go_auto_type_info = 0
 
 " Use Pop-up window for doc
 let g:go_doc_popup_window = 1
@@ -432,6 +435,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require'lspconfig'.sumneko_lua.setup{}
 
 require'lspconfig'.gopls.setup{
+  cmd = {"gopls", "-remote=unix;/tmp/gopls-daemon-socket"},
   capabailities = capabilities,
   on_attach = function() 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
