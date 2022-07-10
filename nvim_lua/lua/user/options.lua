@@ -10,6 +10,9 @@ vim.opt.hlsearch = true                     -- highlight all matches on previous
 vim.opt.ignorecase = false                  -- case sensitive search
 vim.opt.mouse = "a"                         -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10                      -- pop up menu height
+vim.opt.termguicolors = true
+
+vim.opt.showtabline = 2
 
 vim.opt.expandtab = true                    -- use spaces instead of tabs
 vim.opt.tabstop = 2
@@ -24,12 +27,15 @@ vim.opt.timeoutlen = 1000                   -- time to wait for a mapped sequenc
 vim.opt.undofile = true                     -- enable persistent undo
 vim.opt.undodir = HOME_CACHE .. "/.vim/undodir"
 vim.opt.updatetime = 300                    -- status line update frequency
-vim.opt.cursorLine = true                   -- highlight the current line
+vim.opt.cursorline = true                   -- highlight the current line
 vim.opt.number = true                       -- nu
 vim.opt.relativenumber = true               -- rnu
 vim.opt.numberwidth = 4                     -- number column width
 vim.opt.signcolumn = "number"               -- use number col to also display signs
+vim.opt.colorcolumn = { 80, 120, 160 }
 vim.opt.wrap =  false                       -- display as one long line
 vim.opt.scrolloff = 2
 vim.opt.sidescrolloff = 8
+vim.opt.showmatch = true
 
+vim.cmd [[set formatoptions-=o]]
