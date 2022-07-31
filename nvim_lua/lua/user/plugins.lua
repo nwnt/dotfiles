@@ -69,6 +69,13 @@ return packer.startup(function(use)
     use "nvim-telescope/telescope-media-files.nvim"
     use "BurntSushi/ripgrep" -- for live_grep and grep_string
 
+    -- Treesitter --
+    use { 
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+    }
+    use "p00f/nvim-ts-rainbow"
+
     -- LSP -- 
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/mason.nvim" 
