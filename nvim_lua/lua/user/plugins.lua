@@ -69,6 +69,8 @@ return packer.startup(function(use)
     use "williamboman/mason.nvim" 
     use "williamboman/mason-lspconfig.nvim"
     use "b0o/SchemaStore.nvim"
+    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+    use "ray-x/lsp_signature.nvim"
 
     -- Automatically setup configuration after cloning packer.nvim
     -- Put this at the end after all plugins
