@@ -64,6 +64,11 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" -- snippet engine
     use "rafamadriz/friendly-snippets" -- common snippet compilation
 
+    -- Telescope --
+    use "nvim-telescope/telescope.nvim"
+    use "nvim-telescope/telescope-media-files.nvim"
+    use "BurntSushi/ripgrep" -- for live_grep and grep_string
+
     -- LSP -- 
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/mason.nvim" 

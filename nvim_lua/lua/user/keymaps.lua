@@ -20,7 +20,7 @@ vim.g.maplocalleader = " "
 
 -- NORMAL --
 keymap("n", "<leader>;", ":", opts)
-keymap("n", "Q", ":q", opts)
+keymap("n", "Q", ":q<CR>", opts)
 -- Better window movement
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -43,6 +43,9 @@ keymap("n", "J", "mzJ`z", opts)
 -- Navigate buffers
 keymap("n", "<A-Up>", ":bnext<CR>", opts)
 keymap("n", "<A-Down>", ":bprevious<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
 
 
 -- INSERT --
