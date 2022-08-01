@@ -46,7 +46,10 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API for nvim
     use "nvim-lua/plenary.nvim" -- Lua helper functions used by lots of plugins
-    use "machakann/vim-sandwich"
+    --TODO should I move to mini.nvim?
+    use "machakann/vim-sandwich" -- Like vim surround
+    use "windwp/nvim-autopairs"
+    use "numToStr/Comment.nvim" -- comments
 
     -- COLOR SCHEMES --
     use "rebelot/kanagawa.nvim"
@@ -75,6 +78,7 @@ return packer.startup(function(use)
         run = ":TSUpdate",
     }
     use "p00f/nvim-ts-rainbow"
+    use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- LSP -- 
     use "neovim/nvim-lspconfig" -- enable LSP
@@ -83,6 +87,9 @@ return packer.startup(function(use)
     use "b0o/SchemaStore.nvim"
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
     use "ray-x/lsp_signature.nvim"
+
+    -- GIT --
+    use "lewis6991/gitsigns.nvim"
 
     -- Automatically setup configuration after cloning packer.nvim
     -- Put this at the end after all plugins
