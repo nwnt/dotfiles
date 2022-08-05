@@ -50,6 +50,8 @@ return packer.startup(function(use)
     use "machakann/vim-sandwich" -- Like vim surround
     use "windwp/nvim-autopairs"
     use "numToStr/Comment.nvim" -- comments
+    use "kyazdani42/nvim-web-devicons"
+    use "kyazdani42/nvim-tree.lua"
 
     -- COLOR SCHEMES --
     use "rebelot/kanagawa.nvim"
@@ -82,11 +84,14 @@ return packer.startup(function(use)
 
     -- LSP -- 
     use "neovim/nvim-lspconfig" -- enable LSP
-    use "williamboman/mason.nvim" 
+    use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "b0o/SchemaStore.nvim"
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
     use "ray-x/lsp_signature.nvim"
+    use "folke/lua-dev.nvim"
+
+
 
     -- GIT --
     use "lewis6991/gitsigns.nvim"

@@ -169,8 +169,8 @@ else
       Octoface = " ",
     },
     ui = {
-      ArrowClosed = "",
-      ArrowOpen = "",
+      ArrowClosed = ">",
+      ArrowOpen = "",
       Lock = " ",
       Circle = " ",
       BigCircle = " ",
