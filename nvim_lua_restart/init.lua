@@ -1,0 +1,8 @@
+require "nont/base"
+require "nont/plugins"
+require "nont/colorscheme"
+require "nont/lualine"
+require "nont/cmp"
+require "nont/lsp"
+require "nont/keymap"
+require "nont/illuminate"
