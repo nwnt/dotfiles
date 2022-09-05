@@ -7,7 +7,7 @@ local xnoremap = b.xnoremap
 
 local opts = { noremap = true, silent = true }
 -- using space as the leader key
-vim.keymap.set("", "<Space>", "<Nop", opts)
+vim.keymap.set("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 

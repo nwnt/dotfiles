@@ -75,7 +75,10 @@ mason_lsp.setup_handlers {
                 Lua = {
                     diagnostics = {
                         globals = { "vim" },
-                    }
+                    },
+                    workspace = {
+                        checkThirdParty = false,
+                    },
                 }
             },
         }

@@ -117,6 +117,23 @@ packer.startup(function(use)
         end
     }
 
+    use({
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      {
+        -- only needed if you want to use the commands with "_with_window_picker" suffix
+        "s1n7ax/nvim-window-picker",
+        config = get_config("nvim-window-picker"),
+      },
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = get_config("neotree"),
+  })
+
+
     -- automatically set up your configuration after cloning packer.nvim
     -- put this at the end after all plugins
     if PACKER_BOOTSTRAP then
