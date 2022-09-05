@@ -5,7 +5,7 @@ end
 
 local icons = require("nont.icons")
 
-require('telescope').setup{
+telescope.setup{
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,

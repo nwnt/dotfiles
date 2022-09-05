@@ -8,7 +8,7 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   local opts = { noremap = true, silent = true, buffer = bufnr, }
   vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-  vim.keymap.set("n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
+  --vim.keymap.set("n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
   vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)

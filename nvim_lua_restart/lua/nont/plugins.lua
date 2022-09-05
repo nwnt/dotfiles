@@ -1,5 +1,11 @@
 local fn = vim.fn
 
+-- returns the require for use in 'config' parameter of packer's use
+-- expects the name of the config file (under the folder)
+local function get_config(name)
+    return string.format('require("plugconf/%s")', name)
+end
+
 -- Install Packer if not already being done so
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -11,7 +17,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
         "https://github.com/wbthomason/packer.nvim",
         install_path,
     }
-    print "Installing packer close and reopen Neovim..."
+    print "Instaling packer close and reopen Neovim..."
     vim.cmd [[packadd packer.nvim]]
 end
 
@@ -54,23 +60,23 @@ packer.startup(function(use)
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        "whoissethdaniel/mason-tool-installer.nvim",
         "neovim/nvim-lspconfig",
-        "RRethy/vim-illuminate", -- Automatically highlight word under the cursor
-        "SmiteshP/nvim-navic"
+        "rrethy/vim-illuminate", -- automatically highlight word under the cursor
+        "smiteshp/nvim-navic"
     }
 
     use {
-        -- AUTOCOMPLETE --
-        "hrsh7th/nvim-cmp", -- The actual completion plugin
+        -- autocomplete --
+        "hrsh7th/nvim-cmp", -- the actual completion plugin
         "hrsh7th/cmp-buffer", -- buffer completions
         "hrsh7th/cmp-path", -- path completions
         "hrsh7th/cmp-cmdline", -- cmdline completions
         "hrsh7th/cmp-nvim-lua",
         "saadparwaiz1/cmp_luasnip", -- snippet completions
         "hrsh7th/cmp-nvim-lsp",
-        -- SNIPPETS --
-        "L3MON4D3/LuaSnip", -- snippet engine
+        -- snippets --
+        "l3mon4d3/luasnip", -- snippet engine
         "rafamadriz/friendly-snippets", -- common snippet compilation
         "folke/lua-dev.nvim"
     }
@@ -82,9 +88,37 @@ packer.startup(function(use)
         }
     }
 
+    use({
+        --- treesitter main
+        "nvim-treesitter/nvim-treesitter",
+        run = ":tsupdate",
+        config = get_config("treesitter"),
+    })
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
+
+    use{
+        -- extra treesitter stuff
+        "romgrk/nvim-treesitter-context",
+        "nvim-treesitter/playground",
+        "rrethy/nvim-treesitter-endwise",
+    }
+
+    use({ "windwp/nvim-autopairs", config = get_config("nvim-autopairs") })
+    use({ "echasnovski/mini.nvim", branch = "stable", config = get_config("mini") })
+    use({ "folke/which-key.nvim", config = get_config("which-key") })
+
+    use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = get_config("go"), ft = { "go" } })
+
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2',
+        config = function()
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
+
+    -- automatically set up your configuration after cloning packer.nvim
+    -- put this at the end after all plugins
     if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
