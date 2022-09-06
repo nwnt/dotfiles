@@ -1,4 +1,4 @@
-local b = require("nont.keymap.binding")
+local b = require("keymap.binding")
 local nmap = b.nmap
 local nnoremap = b.nnoremap
 local inoremap = b.inoremap
@@ -134,5 +134,5 @@ inoremap("<C-e>", "<C-o>g_")
 --ks("x", "J", ":move '>+1<CR>gv=gv", opts)
 --ks("x", "K", ":move '<-2<CR>gv=gv", opts)
 --
-require("nont.keymap.telescope")
-require("nont.keymap.hop")
+require("keymap.telescope")
+require("keymap.hop")

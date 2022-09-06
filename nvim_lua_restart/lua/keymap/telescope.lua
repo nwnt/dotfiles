@@ -1,4 +1,4 @@
-local b = require("nont.keymap.binding")
+local b = require("keymap.binding")
 local nnoremap = b.nnoremap
 --local nmap = b.nmap
 --local inoremap = b.inoremap

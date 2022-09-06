@@ -1,7 +1,7 @@
 local ok, _ = pcall(require, "hop")
 if not ok then return end
 
-local b = require("nont.keymap.binding")
+local b = require("keymap.binding")
 local nnoremap = b.nnoremap
 --nnoremap("f", hop.hint_char1(horizontal_forward_opts))
 --nnoremap("F", hop.hint_char1(horizontal_backward_opts))

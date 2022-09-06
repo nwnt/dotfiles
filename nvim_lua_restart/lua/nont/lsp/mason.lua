@@ -85,5 +85,14 @@ mason_lsp.setup_handlers {
         local merged_config = vim.tbl_deep_extend("force", vim_config, luadev)
         lspconfig.sumneko_lua.setup(merged_config)
     end,
---    ["gopls"]
+    ["gopls"] = function()
+        lspconfig.gopls.setup {
+            cmd = {"gopls"},
+            filetypes = {"go", "gomod", "gowork", "gotmpl",},
+            --root_dir = root_pattern("go.mod", ".git"),
+            single_file_support = true,
+            on_attach = handlers,
+            capabilities = capabilities,
+        }
+    end
 }
