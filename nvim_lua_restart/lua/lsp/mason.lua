@@ -50,7 +50,7 @@ end
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
-local handlers = require("nont.lsp.handlers").handlers
+local handlers = require("lsp.handlers").handlers
 --------------------------------
 --------------------------------
 

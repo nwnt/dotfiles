@@ -4,5 +4,5 @@ if not status_ok then
     return
 end
 
-require "nont.lsp.mason"
-require "nont.lsp.generalconfig".setup()
+require "lsp.mason"
+require "lsp.generalconfig".setup()
