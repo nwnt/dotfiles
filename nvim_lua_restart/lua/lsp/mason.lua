@@ -28,7 +28,8 @@ mason.setup {}
 mason_lsp.setup {
     ensure_installed = {
         'gopls',
-        'lua-language-server',
+        'sumneko_lua',
+        'tsserver',
     },
     automatic_installation = false,
 }
@@ -41,14 +42,14 @@ mason_tool.setup {
 --  Capabilities 
 --------------------------------
 --------------------------------
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+--local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
   return
 end
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+--capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 local handlers = require("lsp.handlers").handlers
 --------------------------------
@@ -56,21 +57,20 @@ local handlers = require("lsp.handlers").handlers
 
 mason_lsp.setup_handlers {
     ["sumneko_lua"] = function()
-        local ok, ldev = pcall(require, "lua-dev")
+        local ok, ldev = pcall(require, "neodev")
         if not ok then
             return
         end
 
-        local luadev = ldev.setup({
-            lspconfig = {
-                on_attach = handlers,
-                capabilities = capabilities,
-                -- August 31, 2022: Server Capabiltiies is wrong.  Look at the source's handlers.lua file
-            },
+        ldev.setup({
+            -- add any options here from neodev
         })
 
         local vim_config = {
-            --on_attach = opts.on_attach,
+            lspconfig = {
+                on_attach = handlers,
+                capabilities = capabilities,
+            },
             settings = {
                 Lua = {
                     diagnostics = {
@@ -82,8 +82,7 @@ mason_lsp.setup_handlers {
                 }
             },
         }
-        local merged_config = vim.tbl_deep_extend("force", vim_config, luadev)
-        lspconfig.sumneko_lua.setup(merged_config)
+        lspconfig.sumneko_lua.setup(vim_config)
     end,
     ["gopls"] = function()
         lspconfig.gopls.setup {
@@ -94,5 +93,7 @@ mason_lsp.setup_handlers {
             on_attach = handlers,
             capabilities = capabilities,
         }
-    end
+    end,
 }
+
+lspconfig.tsserver.setup {}

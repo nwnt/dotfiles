@@ -73,12 +73,14 @@ packer.startup(function(use)
         "hrsh7th/cmp-path", -- path completions
         "hrsh7th/cmp-cmdline", -- cmdline completions
         "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         "saadparwaiz1/cmp_luasnip", -- snippet completions
         "hrsh7th/cmp-nvim-lsp",
         -- snippets --
         "l3mon4d3/luasnip", -- snippet engine
         "rafamadriz/friendly-snippets", -- common snippet compilation
-        "folke/lua-dev.nvim"
+        "folke/neodev.nvim",
+        "onsails/lspkind.nvim",
     }
 
     use {
@@ -91,7 +93,7 @@ packer.startup(function(use)
     use({
         --- treesitter main
         "nvim-treesitter/nvim-treesitter",
-        run = ":tsupdate",
+        run = ":TSUpdate",
         config = get_config("treesitter"),
     })
 

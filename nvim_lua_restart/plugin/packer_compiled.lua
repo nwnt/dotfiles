@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/home/nont/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-nvim-lua"] = {
     loaded = true,
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
@@ -133,10 +138,10 @@ _G.packer_plugins = {
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
     url = "https://github.com/rebelot/kanagawa.nvim"
   },
-  ["lua-dev.nvim"] = {
+  ["lspkind.nvim"] = {
     loaded = true,
-    path = "/home/nont/.local/share/nvim/site/pack/packer/start/lua-dev.nvim",
-    url = "https://github.com/folke/lua-dev.nvim"
+    path = "/home/nont/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -174,6 +179,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
     url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
+  },
+  ["neodev.nvim"] = {
+    loaded = true,
+    path = "/home/nont/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
   },
   ["nui.nvim"] = {
     loaded = true,
@@ -302,6 +312,9 @@ vim.cmd [[augroup filetypedetect]]
 time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], true)
 vim.cmd [[source /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]]
 time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], false)
+time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], true)
+vim.cmd [[source /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]]
+time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

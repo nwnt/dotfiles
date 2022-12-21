@@ -178,6 +178,9 @@ export PATH=$PATH:$GOBIN
 export LUA_LSP_MAIN=/usr/lib/lua-language-server/main.lua
 export LUA_LSP_BIN=/usr/bin/lua-language-server
 
+# Docker options
+export DOCKER_BUILDKIT=1
+
 #Evince (PDF Reader)
 #export DISPLAY=desktop:0
 #
@@ -189,8 +192,17 @@ bindkey "^[;" copy-earlier-word
 
 autoload -U +X bashcompinit && bashcompinit
 
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # FASD util
 #eval "$(fasd --init posix-alias zsh-hook)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/tmp/cluster/cluster/google-cloud-sdk/path.zsh.inc' ]; then . '/tmp/cluster/cluster/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/tmp/cluster/cluster/google-cloud-sdk/completion.zsh.inc' ]; then . '/tmp/cluster/cluster/google-cloud-sdk/completion.zsh.inc'; fi

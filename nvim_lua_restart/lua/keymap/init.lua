@@ -74,8 +74,8 @@ xnoremap("K", ":m '<-2<CR>gv=gv")
 --    Insert Mode Mapping
 --]]
 inoremap("jk", "<ESC>")
-inoremap("<C-a>", "<C-o>^")
-inoremap("<C-e>", "<C-o>g_")
+inoremap("<C-a>", "<ESC>^i")
+inoremap("<C-e>", "<ESC>g_a")
 
 -- Navigate buffers
 --
