@@ -15,7 +15,6 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_text = true,
     -- virtual_text = {
     --   -- spacing = 7,
     --   -- update_in_insert = false,

@@ -52,7 +52,7 @@ packer.startup(function(use)
 
     use "rebelot/kanagawa.nvim"
 
-    use {
+    use {  -- Fancier status line
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true }
     }
@@ -63,7 +63,8 @@ packer.startup(function(use)
         "whoissethdaniel/mason-tool-installer.nvim",
         "neovim/nvim-lspconfig",
         "rrethy/vim-illuminate", -- automatically highlight word under the cursor
-        "smiteshp/nvim-navic"
+        "smiteshp/nvim-navic",
+        "j-hui/fidget.nvim"
     }
 
     use {
@@ -89,6 +90,11 @@ packer.startup(function(use)
             "nvim-lua/plenary.nvim",
         }
     }
+    use {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+        cond = fn.executable "make" == 1
+    }
 
     use({
         --- treesitter main
@@ -97,12 +103,17 @@ packer.startup(function(use)
         config = get_config("treesitter"),
     })
 
+    use "tpope/vim-fugitive"
+    use "tpope/vim-rhubarb"
+    use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
 
     use{
         -- extra treesitter stuff
         "romgrk/nvim-treesitter-context",
         "nvim-treesitter/playground",
         "rrethy/nvim-treesitter-endwise",
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter"
     }
 
     use({ "windwp/nvim-autopairs", config = get_config("nvim-autopairs") })
@@ -116,6 +127,43 @@ packer.startup(function(use)
         branch = 'v2',
         config = function()
             require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
+
+    use {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
+    }
+    use {
+        "numToStr/Comment.nvim", -- "gc" to comment visual regions/lines
+        config = function()
+            require'Comment'.setup()
+        end
+    }
+
+    use {
+       "lukas-reineke/indent-blankline.nvim", -- Add indentation guides 
+        config = function()
+            require'indent_blankline'.setup {
+                show_trailing_blankline_indent = false,
+            }
+        end
+    }
+
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require'gitsigns'.setup {
+                signs = {
+                    add = { text = '+' },
+                    change = { text = '~' },
+                    delete = { text = '_' },
+                    topdelete = { text = '‾' },
+                    changedelete = { text = '~' },
+                },
+            }
         end
     }
 
