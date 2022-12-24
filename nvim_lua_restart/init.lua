@@ -1,4 +1,4 @@
-require "nont.base"
+require "settings"
 require "nont.plugins"
 require "nont.colorscheme"
 require "nont.lualine"

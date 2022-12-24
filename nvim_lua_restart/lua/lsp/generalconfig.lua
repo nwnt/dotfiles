@@ -27,6 +27,10 @@ M.setup = function()
     --   -- end,
     -- },
 
+    virtual_text = false,
+    virtual_lines = {
+      only_current_line = true
+    },
     -- show signs
     signs = {
       active = signs,

@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup({
     "dockerfile",
     "go",
     "hcl",
+    "help",
     "html",
     "java",
     "javascript",

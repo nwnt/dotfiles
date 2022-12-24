@@ -1,12 +1,16 @@
+-- vim:foldmethod=marker:foldlevel=0:foldenable:
 local fn = vim.fn
 
+-- get_config util fn {{{
 -- returns the require for use in 'config' parameter of packer's use
 -- expects the name of the config file (under the folder)
+-- source allaman/nvim
 local function get_config(name)
     return string.format('require("plugconf/%s")', name)
 end
+--- }}}
 
--- Install Packer if not already being done so
+-- Install Packer if not already being done so {{{
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = fn.system {
@@ -20,16 +24,18 @@ if fn.empty(fn.glob(install_path)) > 0 then
     print "Instaling packer close and reopen Neovim..."
     vim.cmd [[packadd packer.nvim]]
 end
+-- }}}
 
--- Reloads and packersync after saving this file
-
+-- Reloads and packersync after saving this file {{{
 vim.cmd [[
     augroup packer_user_config
         autocmd!
         autocmd BufWritePost plugins.lua source <afile> | PackerSync
     augroup end
 ]]
+--- }}}
 
+--- Packer Init {{{
 local loaded, packer = pcall(require, "packer")
 if not loaded then
     print "Packer is not installed"
@@ -45,18 +51,21 @@ packer.init {
 }
 
 vim.cmd [[packadd packer.nvim]]
+--- }}}
 
 packer.startup(function(use)
 
     use "wbthomason/packer.nvim"
 
-    use "rebelot/kanagawa.nvim"
+    use "rebelot/kanagawa.nvim" -- colorscheme
 
-    use {  -- Fancier status line
+    -- Fancier status line {{{
+    use {
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true }
-    }
+    } -- }}}
 
+    -- LSP related plugins {{{
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -65,8 +74,9 @@ packer.startup(function(use)
         "rrethy/vim-illuminate", -- automatically highlight word under the cursor
         "smiteshp/nvim-navic",
         "j-hui/fidget.nvim"
-    }
+    } -- }}}
 
+    -- Auto Complete & Snippet sources {{{
     use {
         -- autocomplete --
         "hrsh7th/nvim-cmp", -- the actual completion plugin
@@ -82,10 +92,12 @@ packer.startup(function(use)
         "rafamadriz/friendly-snippets", -- common snippet compilation
         "folke/neodev.nvim",
         "onsails/lspkind.nvim",
-    }
+    } -- }}}
 
+-- Telescope {{{
     use {
-        "nvim-telescope/telescope.nvim", tag = "0.1.0",
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
         requires = {
             "nvim-lua/plenary.nvim",
         }
@@ -95,6 +107,7 @@ packer.startup(function(use)
         run = "make",
         cond = fn.executable "make" == 1
     }
+---}}}
 
     use({
         --- treesitter main

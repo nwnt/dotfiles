@@ -36,7 +36,7 @@ nnoremap("<C-Right>", ":vertical resize +2<CR>")
 ---- Keep the search centered
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
-nnoremap("J", "mzJ`z")
+nnoremap("J", "mzJ`z") -- join and then stay on the same line
 nnoremap("<leader>d", '"_d')
 
 nnoremap("Y", "yg$")
@@ -47,6 +47,15 @@ nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 nnoremap("<a-up>", ":bnext<cr>")
 nnoremap("<a-down>", ":bprevious<cr>")
+
+-- Quickfix and Location list navigation
+nnoremap("\\j", ":cnext<CR>zz")
+nnoremap("\\k", ":cprev<CR>zz")
+nnoremap("\\n", ":lnext<CR>zz")
+nnoremap("\\p", ":lprev<CR>zz")
+
+-- Quickly replace the word the cursor is on
+nnoremap("\\s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 nnoremap("z.", "zszH") -- horizontally centering
 -- Dealing with word wrap
