@@ -29,11 +29,18 @@ local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
   return
 end
+
+local fidget_ok, fidget = pcall(require, "fidget")
+if not fidget_ok then
+    return 
+end
 -- }}}
 
 -- Enable the following language servers
 -- Add any additional override configs in the following tables.  They will 
 -- passed to the settings field of the server config.
+
+fidget.setup()
 
 local servers = {
     sumneko_lua = {
@@ -70,7 +77,6 @@ ldev.setup({
 })
 -- }}}
 
-require('fidget').setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
@@ -85,35 +91,5 @@ mason_lsp.setup_handlers {
             settings = servers[server_name],
         }
     end,
---    ["sumneko_lua"] = function()
---
---        local vim_config = {
---            lspconfig = {
---                on_attach = handlers,
---                capabilities = capabilities,
---            },
---            settings = {
---                Lua = {
---                    diagnostics = {
---                        globals = { "vim" },
---                    },
---                    workspace = {
---                        checkThirdParty = false,
---                    },
---                }
---            },
---        }
---        lspconfig.sumneko_lua.setup(vim_config)
---    end,
---    ["gopls"] = function()
---        lspconfig.gopls.setup {
---            cmd = {"gopls"},
---            filetypes = {"go", "gomod", "gowork", "gotmpl",},
---            --root_dir = root_pattern("go.mod", ".git"),
---            single_file_support = true,
---            on_attach = handlers,
---            capabilities = capabilities,
---        }
---    end,
 }
 

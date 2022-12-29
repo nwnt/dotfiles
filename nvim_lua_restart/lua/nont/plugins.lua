@@ -76,7 +76,7 @@ packer.startup(function(use)
         "j-hui/fidget.nvim"
     } -- }}}
 
-    -- Auto Complete & Snippet sources {{{
+    -- Auto Complete & Snippet sources (nvim-cmp){{{
     use {
         -- autocomplete --
         "hrsh7th/nvim-cmp", -- the actual completion plugin
@@ -87,6 +87,7 @@ packer.startup(function(use)
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "saadparwaiz1/cmp_luasnip", -- snippet completions
         "hrsh7th/cmp-nvim-lsp",
+        "lukas-reineke/cmp-rg",
         -- snippets --
         "l3mon4d3/luasnip", -- snippet engine
         "rafamadriz/friendly-snippets", -- common snippet compilation

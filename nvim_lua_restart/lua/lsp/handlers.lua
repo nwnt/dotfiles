@@ -8,39 +8,46 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   local opts = { noremap = true, silent = true, buffer = bufnr, }
   vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-  --vim.keymap.set("n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
   vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-  vim.keymap.set('n', '<space>wl', function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, opts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]] -- Define the Format function
-  vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
-  vim.keymap.set("n", "<leader>gf", "<cmd>Format<CR>", opts)
+  vim.keymap.set("n", "<leader>cs", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>cd", vim.lsp.buf.type_definition, opts)
+  vim.keymap.set("n", "<leader>cf", function () vim.lsp.buf.format {async = true} end, opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<cr>")
+  vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float)
+  vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist, opts)
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+
+-- Workspace related commands
+  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+  vim.keymap.set("n", "<leader>ws", "<cmd>Telescope lsp_workspace_symbols", opts)
+  vim.keymap.set("n", "<leader>wS", "<cmd>Telescope lsp_dynamic_workspace_symbols", opts)
+  vim.keymap.set("n", "<leader>wd", "<cmd>Telescope diagnostics", opts)
+  vim.keymap.set('n', '<leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, opts)
 end
 
 local function attach_navic(client, bufnr)
-    vim.g.navic_silence = true
-    local status_ok, navic = pcall(require, "nvim-navic")
-    if not status_ok then
-        return
-    end
-    navic.attach(client, bufnr)
+  vim.g.navic_silence = true
+  local status_ok, navic = pcall(require, "nvim-navic")
+  if not status_ok then
+    return
+  end
+  navic.attach(client, bufnr)
 end
 
 M.handlers = function(client, bufnr)
-    lsp_keymaps(bufnr)
-    attach_navic(client, bufnr)
+  lsp_keymaps(bufnr)
+  attach_navic(client, bufnr)
 
-    --[[
+  --[[
     if client.name == "jdt.ls" then
         vim.lsp.codelens.refresh()
         if JAVA_DAP_ACTIVE then

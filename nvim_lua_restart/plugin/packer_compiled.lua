@@ -110,6 +110,11 @@ _G.packer_plugins = {
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-rg"] = {
+    loaded = true,
+    path = "/home/nont/.local/share/nvim/site/pack/packer/start/cmp-rg",
+    url = "https://github.com/lukas-reineke/cmp-rg"
+  },
   cmp_luasnip = {
     loaded = true,
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/cmp_luasnip",

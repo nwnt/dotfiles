@@ -5,4 +5,4 @@ if not status_ok then
 end
 
 require "lsp.mason"
-require "lsp.generalconfig".setup()
+require "lsp.config".setup()

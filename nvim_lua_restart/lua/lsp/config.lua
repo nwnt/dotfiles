@@ -1,3 +1,5 @@
+-- Main configurations for my LSP module
+
 local M = {}
 
 M.setup = function()
