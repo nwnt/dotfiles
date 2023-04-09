@@ -306,6 +306,12 @@ _G.packer_plugins = {
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["twilight.nvim"] = {
+    config = { "\27LJ\2\2:\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\rtwilight\frequire\0" },
+    loaded = true,
+    path = "/home/nont/.local/share/nvim/site/pack/packer/start/twilight.nvim",
+    url = "https://github.com/folke/twilight.nvim"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/nont/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -355,14 +361,18 @@ time([[Config for indent-blankline.nvim]], false)
 time([[Config for neo-tree.nvim]], true)
 require("plugconf/neotree")
 time([[Config for neo-tree.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\2Ó\1\0\0\4\0\16\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\14\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\2=\2\15\1B\0\2\1K\0\1\0\nsigns\1\0\0\17changedelete\1\0\1\ttext\6~\14topdelete\1\0\1\ttext\bâ€¾\vdelete\1\0\1\ttext\6_\vchange\1\0\1\ttext\6~\badd\1\0\0\1\0\1\ttext\6+\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\0025\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\2Ó\1\0\0\4\0\16\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\14\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\2=\2\15\1B\0\2\1K\0\1\0\nsigns\1\0\0\17changedelete\1\0\1\ttext\6~\14topdelete\1\0\1\ttext\bâ€¾\vdelete\1\0\1\ttext\6_\vchange\1\0\1\ttext\6~\badd\1\0\0\1\0\1\ttext\6+\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: twilight.nvim
+time([[Config for twilight.nvim]], true)
+try_loadstring("\27LJ\2\2:\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\rtwilight\frequire\0", "config", "twilight.nvim")
+time([[Config for twilight.nvim]], false)
 -- Config for: mini.nvim
 time([[Config for mini.nvim]], true)
 require("plugconf/mini")
@@ -391,12 +401,9 @@ vim.cmd [[au FileType go ++once lua require("packer.load")({'go.nvim'}, { ft = "
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], true)
-vim.cmd [[source /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]]
-time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], false)
-time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], true)
-vim.cmd [[source /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]]
-time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], false)
+time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/filetype.vim]], true)
+vim.cmd [[source /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/filetype.vim]]
+time([[Sourcing ftdetect script at: /home/nont/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/filetype.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

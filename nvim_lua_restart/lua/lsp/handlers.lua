@@ -9,12 +9,12 @@ local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr, }
   vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, {desc = "LSP Hovering"})
   vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
   vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "<leader>cs", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "<leader>cs", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "<leader>cd", vim.lsp.buf.type_definition, opts)
   vim.keymap.set("n", "<leader>cf", function () vim.lsp.buf.format {async = true} end, opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -34,28 +34,12 @@ local function lsp_keymaps(bufnr)
   end, opts)
 end
 
-local function attach_navic(client, bufnr)
-  vim.g.navic_silence = true
-  local status_ok, navic = pcall(require, "nvim-navic")
-  if not status_ok then
-    return
-  end
-  navic.attach(client, bufnr)
-end
 
 M.handlers = function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
   lsp_keymaps(bufnr)
-  attach_navic(client, bufnr)
-
-  --[[
-    if client.name == "jdt.ls" then
-        vim.lsp.codelens.refresh()
-        if JAVA_DAP_ACTIVE then
-            require("jdtls")setup_dap { hotcodereplace = "auto" }
-            require("jdtls.dap").setup_dap_main_class_configs()
-        end
-    end
-    --]]
 end
 
 

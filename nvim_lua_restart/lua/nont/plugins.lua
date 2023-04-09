@@ -116,19 +116,27 @@ packer.startup(function(use)
         run = ":TSUpdate",
         config = get_config("treesitter"),
     })
-
-    use "tpope/vim-fugitive"
-    use "tpope/vim-rhubarb"
-    use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
-
-    use{
+    use({
         -- extra treesitter stuff
         "romgrk/nvim-treesitter-context",
         "nvim-treesitter/playground",
         "rrethy/nvim-treesitter-endwise",
         "nvim-treesitter/nvim-treesitter-textobjects",
         after = "nvim-treesitter"
-    }
+    })
+    use({
+        "folke/twilight.nvim",
+        config = function ()
+            require"twilight".setup{}
+        end
+    })
+
+
+
+    use "tpope/vim-fugitive"
+    use "tpope/vim-rhubarb"
+    use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
+
 
     use({ "windwp/nvim-autopairs", config = get_config("nvim-autopairs") })
     use({ "echasnovski/mini.nvim", branch = "stable", config = get_config("mini") })

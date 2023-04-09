@@ -36,6 +36,7 @@ O.clipboard             = "unnamed"
 O.completeopt           = { "menuone", "noselect", "noinsert" } -- for auto complete behaviors
 O.conceallevel          = 0
 O.mouse                 = "a" -- enable mouse for all modes
+O.pumblend              = 10
 O.pumheight             = 10
 O.splitbelow            = true
 O.swapfile              = false
@@ -54,3 +55,7 @@ O.cursorline            = true -- highlight the current line
 O.termguicolors         = true
 O.pumblend              = 5
 
+-- Folding
+O.foldmethod            = "expr"
+O.foldexpr              = "nvim_treesitter#foldexpr()"
+O.foldenable            = false
