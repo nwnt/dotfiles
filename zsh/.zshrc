@@ -194,6 +194,8 @@ bindkey "^[;" copy-earlier-word
 
 autoload -U +X bashcompinit && bashcompinit
 
+eval "$(~/.local/opt/linuxbrew/bin/brew shellenv)"
+
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
@@ -202,9 +204,3 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # FASD util
 #eval "$(fasd --init posix-alias zsh-hook)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/tmp/cluster/cluster/google-cloud-sdk/path.zsh.inc' ]; then . '/tmp/cluster/cluster/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/tmp/cluster/cluster/google-cloud-sdk/completion.zsh.inc' ]; then . '/tmp/cluster/cluster/google-cloud-sdk/completion.zsh.inc'; fi

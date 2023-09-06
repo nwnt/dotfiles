@@ -93,8 +93,8 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: "MesloLGS NF"
-    style: Regular
+    family: "IntoneMono NFM Medium"
+    style: Regular 
     #  bold:
     #    family: "MesloLGS Bold NF"
     #    style: Bold
@@ -105,7 +105,7 @@ font:
     #    family: "MesloLGS Bold Italic NF"
     #    style: Bold Italic
 
-  size: 11
+  size: 12
 
   # Offset is the extra space arouSourceCodePro Nerd Font
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
