@@ -130,7 +130,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias ls="exa --group-directories-first"
+alias ls="eza --group-directories-first"
 alias zshconfig="vi $ZDOTDIR/.zshrc"
 alias serve="browser-sync start --server --files ."
 alias vimconfig="vi $XDG_CONFIG_HOME/nvim/init.vim"
@@ -194,7 +194,7 @@ bindkey "^[;" copy-earlier-word
 
 autoload -U +X bashcompinit && bashcompinit
 
-eval "$(~/.local/opt/linuxbrew/bin/brew shellenv)"
+#eval "$(~/.local/opt/linuxbrew/bin/brew shellenv)"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
