@@ -143,8 +143,6 @@ alias ua-update-all='export TMPFILE="$(mktemp)"; \
       && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
       && ua-drop-caches \
       && yay -Syyu --noconfirm'
-alias bat="batcat"
-alias fox="yarn --cwd /home/nont/work/foxtail/foxtail-monorepo g:fox $@"
 alias tldrf='tldr -l | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 
 # Bindkeys
@@ -193,8 +191,6 @@ zle -N copy-earlier-word
 bindkey "^[;" copy-earlier-word
 
 autoload -U +X bashcompinit && bashcompinit
-
-#eval "$(~/.local/opt/linuxbrew/bin/brew shellenv)"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
