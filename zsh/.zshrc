@@ -204,3 +204,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # FASD util
 #eval "$(fasd --init posix-alias zsh-hook)"
+
+# FZF for history and autocomplete
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
